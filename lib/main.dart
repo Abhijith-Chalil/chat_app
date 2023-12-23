@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:chat_app/presentation/pages/home/home_page.dart';
+import 'package:chat_app/presentation/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,8 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Chat App',
       theme: ThemeData(
+        textTheme: const TextTheme(
+            bodyMedium: TextStyle(
+          color: textColor,
+        )),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -23,6 +29,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 Future<String?> myLocalIp() async {
   final interfaces = await NetworkInterface.list(
       type: InternetAddressType.IPv4, includeLinkLocal: true);
